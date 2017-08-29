@@ -4,22 +4,8 @@ table
   thead
     tr
       th Name
-      th Body
-      th Slug
-      th
-      th
-      th
 
   tbody
     - @contents.each do |content|
       tr
-        td = content.name
-        td = content.body
-        td = content.slug
-        td = link_to 'Show', content
-        td = link_to 'Edit', edit_content_path(content)
-        td = link_to 'Destroy', content, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Content', new_content_path
+        td = link_to content.name, blog_path(content)

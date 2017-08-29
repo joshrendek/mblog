@@ -1,0 +1,22 @@
+h1 Listing contents
+
+table
+  thead
+    tr
+      th Name
+      th Slug
+      th
+      th
+      th
+
+  tbody
+    - @contents.each do |content|
+      tr
+        td = content.name
+        td = content.slug
+        td = link_to 'Edit', edit_admin_content_path(content)
+        td = link_to 'Destroy', admin_content_path(content), data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Content', new_admin_content_path

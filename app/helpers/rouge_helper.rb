@@ -5,6 +5,9 @@ module RougeHelper
 
   class HTML < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
+    def rouge_formatter(lexer)
+        Rouge::Formatters::HTMLLegacy.new(:css_class => "highlight #{lexer.tag}", line_numbers: true)
+    end
   end
 
   def rouge_markdown(text)
@@ -12,7 +15,8 @@ module RougeHelper
         filter_html: true,
         hard_wrap: true,
         link_attributes: { rel: 'nofollow' },
-        line_numbers: true
+        line_numbers: true,
+        scope: 'foobar'
     }
     renderer = HTML.new(render_options)
 
