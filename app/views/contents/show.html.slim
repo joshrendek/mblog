@@ -1,11 +1,1 @@
-p#notice = notice
-
-p
-  strong Name:
-  = @content.name
-p
-  strong Body:
-  = rouge_markdown(@content.body).html_safe
-p
-  strong Slug:
-  = @content.slug
+= render 'display', content: @content

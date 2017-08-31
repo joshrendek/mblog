@@ -10,9 +10,12 @@ namespace :import do
         puts "Importing: #{file}"
         meta = YAML.load_file(file)
         body = File.read(file).split("---")[2..-1].join("")
+        post_date = file.split('/')[-1].split("-")
+        year,month,day = post_date[0].to_i, post_date[1].to_i, post_date[2].to_i
+        date = Date.new(year, month, day)
         Content.create(name: meta['title'],
-                       created_at: meta['date'],
-                       updated_at: meta['date'],
+                       created_at: date,
+                       updated_at: date,
                        body: body)
       end
     end

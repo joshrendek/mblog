@@ -1,5 +1,7 @@
 class Content < ApplicationRecord
 
+  default_scope -> { order('created_at desc') }
+
   before_save :slugit
 
   def slugit

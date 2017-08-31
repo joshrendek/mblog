@@ -1,0 +1,31 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title == content_for?(:title) ? yield(:title) : "Untitled"
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "vendor/modernizr"
+    = csrf_meta_tag
+    script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+
+  body
+    div data-sticky-container=""
+      .title-bar data-btm-anchor="content:bottom" data-options="marginTop:0;" data-sticky="" data-top-anchor="1" style="width:100%"
+        .title-bar-left
+          ul.menu
+            li= link_to "Dashboard", admin_root_path
+            li= link_to "Posts", admin_contents_path
+            li= link_to "Settings", admin_settings_path
+        .title-bar-right
+          /! Content
+
+    .grid-x.grid-padding-x
+      .cell.small-9
+        = yield
+      .cell.small-3
+        h1 Sidebars
+
+    = javascript_include_tag "application"

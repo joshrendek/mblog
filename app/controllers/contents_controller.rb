@@ -2,7 +2,11 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.all
+    @contents = Content.limit(5)
+  end
+
+  def archives
+    @years = Content.all.group_by { |c| c.created_at.year }
   end
 
   # GET /contents/1
