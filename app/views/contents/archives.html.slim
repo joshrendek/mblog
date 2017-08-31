@@ -1,7 +1,8 @@
-h2 Archives
+article
+  h2 Archives
 
-- @years.each do |year, contents|
-  h3= year
-  ul
-    - contents.each do |content|
-      li= link_to content.name, blog_path(content)
+  - @years.each do |year, contents|
+    h3= year
+    ul
+      - contents.each do |content|
+        li= link_to content.name, blog_path(content)
