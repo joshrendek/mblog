@@ -1,13 +1,2 @@
 - @contents.each do |content|
   = render 'contents/display', content: content
-h1 Listing contents
-
-table
-  thead
-    tr
-      th Name
-
-  tbody
-    - @contents.each do |content|
-      tr
-        td = link_to content.name, blog_path(content)

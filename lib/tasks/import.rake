@@ -13,7 +13,7 @@ namespace :import do
         post_date = file.split('/')[-1].split("-")
         year,month,day = post_date[0].to_i, post_date[1].to_i, post_date[2].to_i
         date = Date.new(year, month, day)
-        Content.create(name: meta['title'],
+        Content.create(title: meta['title'],
                        created_at: date,
                        updated_at: date,
                        body: body)

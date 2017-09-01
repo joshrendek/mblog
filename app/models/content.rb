@@ -7,7 +7,7 @@ class Content < ApplicationRecord
   before_save :slugit
 
   def slugit
-    self.slug = to_slug(self.name)
+    self.slug = to_slug(self.title)
   end
 
   def to_slug(s)

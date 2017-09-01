@@ -50,6 +50,6 @@ html lang="en"
           ul
             - Content.limit(5).each do |content|
               li
-                span=link_to content.name, blog_path(content)
+                span=link_to content.title, blog_path(content)
 
     = javascript_include_tag "application"

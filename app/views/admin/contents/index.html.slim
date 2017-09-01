@@ -3,7 +3,7 @@ h1 Listing contents
 table
   thead
     tr
-      th Name
+      th Title
       th Slug
       th
       th
@@ -12,7 +12,7 @@ table
   tbody
     - @contents.each do |content|
       tr
-        td = content.name
+        td = content.title
         td = content.slug
         td = link_to 'Edit', edit_admin_content_path(content)
         td = link_to 'Destroy', admin_content_path(content), data: { confirm: 'Are you sure?' }, method: :delete

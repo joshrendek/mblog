@@ -5,4 +5,4 @@ article
     h3= year
     ul
       - contents.each do |content|
-        li= link_to content.name, blog_path(content)
+        li= link_to content.title, blog_path(content)

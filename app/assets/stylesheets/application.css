@@ -13,7 +13,6 @@
  *= require_tree .
  *= require dropzone/dropzone
  *= require_self
-
  *= require editor.md/css/editormd
  */
 @import "rouge";

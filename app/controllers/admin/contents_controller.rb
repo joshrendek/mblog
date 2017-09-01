@@ -83,6 +83,6 @@ class Admin::ContentsController < Admin::BaseAdmin
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def content_params
-    params.require(:content).permit(:name, :body, :slug)
+    params.require(:content).permit(:title, :body, :slug)
   end
 end
