@@ -1,4 +1,16 @@
-= form_for @content, url: admin_content_path(@content), class: 'pure-form' do |f|
+- content_for :sidebar
+  h3 Image Uploader
+  = form_for :files, url: admin_content_upload_path(@content), html: { class: 'dropzone', id: 'editorDropzone' } do |f|
+    = f.submit "Upload"
+
+  .uploads
+  javascript:
+    function loadUploads() { $('.uploads').load("#{admin_content_uploads_path(@content.id)}") }
+    $(function() {
+      loadUploads()
+    });
+
+= form_for @content, url: admin_content_path(@content), html: { class: 'pure-form' } do |f|
   - if @content.errors.any?
     #error_explanation
       h2 = "#{pluralize(@content.errors.count, "error")} prohibited this content from being saved:"

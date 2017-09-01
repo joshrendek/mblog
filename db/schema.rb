@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830121621) do
+ActiveRecord::Schema.define(version: 20170901000746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "content_files", force: :cascade do |t|
+    t.bigint "content_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "attachment_file_name"
+    t.string "attachment_content_type"
+    t.integer "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.index ["content_id"], name: "index_content_files_on_content_id"
+  end
 
   create_table "contents", force: :cascade do |t|
     t.string "name"
@@ -31,4 +42,5 @@ ActiveRecord::Schema.define(version: 20170830121621) do
     t.index ["name"], name: "index_settings_on_name"
   end
 
+  add_foreign_key "content_files", "contents"
 end

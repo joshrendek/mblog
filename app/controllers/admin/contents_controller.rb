@@ -1,10 +1,24 @@
 class Admin::ContentsController < Admin::BaseAdmin
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_content, only: [:show, :edit, :update, :destroy, :uploads, :upload, :delete_upload]
 
   # GET /contents
   # GET /contents.json
   def index
     @contents = Content.all
+  end
+
+  def delete_upload
+    ContentFile.find(params[:upload_id]).destroy
+    redirect_to edit_admin_content_path(@content.id)
+  end
+
+  def uploads
+    render layout: false
+  end
+
+  def upload
+    ContentFile.create(content: @content, attachment: params[:file])
+    render status: :ok, json: {"message": "ok"}
   end
 
   # GET /contents/1
@@ -64,7 +78,7 @@ class Admin::ContentsController < Admin::BaseAdmin
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_content
-    @content = Content.find(params[:id])
+    @content = Content.find(params[:id] || params[:content_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

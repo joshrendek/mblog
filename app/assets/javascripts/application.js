@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require dropzone
 //= require_tree .
 //= require editor.md/editormd
 $(function() {
@@ -27,4 +28,9 @@ $(function() {
     */
 });
 
-$(function(){ $(document).foundation(); });
+Dropzone.options.editorDropzone = {
+    paramName: "file", // The name that will be used to transfer the file
+    success: function(file) {
+        loadUploads()
+    }
+};

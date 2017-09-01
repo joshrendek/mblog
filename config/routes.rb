@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :settings
-    resources :contents
+    resources :contents do
+      post :upload
+      get :uploads
+      delete 'delete_upload/:upload_id', action: :delete_upload, as: :delete_upload
+    end
     root to: 'dashboard#index'
   end
 
