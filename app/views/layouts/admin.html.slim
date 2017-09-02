@@ -12,7 +12,7 @@ html lang="en"
     script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
 
   body
-    div data-sticky-container=""
+    .admin data-sticky-container=""
       .title-bar data-btm-anchor="content:bottom" data-options="marginTop:0;" data-sticky="" data-top-anchor="1" style="width:100%"
         .title-bar-left
           ul.menu
@@ -22,6 +22,7 @@ html lang="en"
         .title-bar-right
           /! Content
 
+    = render 'layouts/messages'
     .grid-x.grid-padding-x
       .cell.small-9
         = yield

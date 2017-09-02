@@ -2,7 +2,8 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    @contents = Content.limit(5)
+    limit = Setting.value(:posts_per_page).to_i
+    @contents = Content.page(params[:page]).per(limit)
   end
 
   def archives

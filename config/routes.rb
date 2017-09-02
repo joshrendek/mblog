@@ -16,5 +16,7 @@ Rails.application.routes.draw do
     root to: 'dashboard#index'
   end
 
+  get 'page/:page', action: :index, controller: :contents
+
   root to: 'contents#index'
 end

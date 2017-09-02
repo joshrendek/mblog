@@ -1,5 +1,4 @@
 class Content < ApplicationRecord
-
   has_many :content_files
 
   default_scope -> { order('created_at desc') }
