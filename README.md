@@ -8,5 +8,7 @@
 ``` shell
 vagrant up
 sudo su
-docker run -d -p 3000:3000 joshrendek/mblog
+export PGPASS=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
+docker run --name mblog-postgres -e POSTGRES_PASSWORD=$PGPASS -e POSTGRES_DB=mblog -d postgres
+docker run --name mblog -d -p 3000:3000 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```

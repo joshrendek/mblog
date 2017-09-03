@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 
   def index
-    limit = Setting.value(:posts_per_page).to_i
+    limit = Setting.value(:posts_per_page, "5").to_i
     @meta = {
       description: Setting.value(:site_description),
       site_name: Setting.value(:site_title),
