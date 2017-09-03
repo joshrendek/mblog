@@ -5,10 +5,10 @@
     = f.select :state, ['published', 'draft']
   .actions=link_to "Save", "#", class: 'button cell auto', id: 'save-button'
   hr
+  = link_to 'Destroy', admin_content_path(@content), method: :delete, data: {confirm:  'Are you sure?'}, class: 'button cell auto alert'
+  hr
   h3 Image Uploader
   = form_for :files, url: admin_content_upload_path(@content), html: { class: 'dropzone', id: 'editorDropzone' } do |f|
-  hr
-  = link_to 'Destroy', admin_content_path(@content), method: :delete, data: {confirm:  'Are you sure?'}, class: 'button cell auto alert'
 
 
   .uploads

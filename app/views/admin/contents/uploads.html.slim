@@ -2,6 +2,6 @@
   = image_tag cf.attachment.url, class: 'thumbnail'
   = text_field_tag '', cf.markdown_url, class: 'thumbnail-focus'
   = form_for cf, url: admin_content_delete_upload_path(@content, cf), method: :delete do |f|
-    = f.submit "Delete", class: 'btn btn-danger'
+    = f.submit "Delete", class: 'button alert cell auto'
 javascript:
   $(".thumbnail-focus").focus(function() { $(this).select(); } );
