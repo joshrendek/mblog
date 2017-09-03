@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901000746) do
+ActiveRecord::Schema.define(version: 20170903182614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20170901000746) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "state", default: "draft"
+    t.index ["state"], name: "index_contents_on_state"
   end
 
   create_table "settings", force: :cascade do |t|

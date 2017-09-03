@@ -16,7 +16,7 @@ namespace :import do
         Content.create(title: meta['title'],
                        created_at: date,
                        updated_at: date,
-                       body: body)
+                       body: body, state: 'published')
       end
     end
   end

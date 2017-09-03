@@ -3,6 +3,8 @@ class Content < ApplicationRecord
 
   default_scope -> { order('created_at desc') }
 
+  scope :published, -> { where(state: 'published') }
+
   before_save :slugit
 
   def slugit

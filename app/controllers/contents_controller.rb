@@ -10,11 +10,11 @@ class ContentsController < ApplicationController
       twitter: Setting.value(:twitter),
       url: Setting.value(:site_url),
     }
-    @contents = Content.page(params[:page]).per(limit)
+    @contents = Content.published.page(params[:page]).per(limit)
   end
 
   def archives
-    @years = Content.all.group_by { |c| c.created_at.year }
+    @years = Content.published.all.group_by { |c| c.created_at.year }
     @meta = {
       description: Setting.value(:site_description),
       site_name: Setting.value(:site_title),

@@ -28,7 +28,8 @@ class Admin::ContentsController < Admin::BaseAdmin
 
   # GET /contents/new
   def new
-    @content = Content.new
+    @content = Content.create(title: 'Untitled post', body: '')
+    redirect_to edit_admin_content_path(@content), notice: 'Post created'
   end
 
   # GET /contents/1/edit
@@ -70,8 +71,7 @@ class Admin::ContentsController < Admin::BaseAdmin
   def destroy
     @content.destroy
     respond_to do |format|
-      format.html { redirect_to contents_url, notice: 'Content was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html { redirect_to admin_contents_url, notice: 'Content was successfully destroyed.' }
     end
   end
 
@@ -83,6 +83,6 @@ class Admin::ContentsController < Admin::BaseAdmin
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def content_params
-    params.require(:content).permit(:title, :body, :slug)
+    params.require(:content).permit(:title, :body, :slug, :state)
   end
 end

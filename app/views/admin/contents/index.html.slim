@@ -1,4 +1,8 @@
-h1 Listing contents
+h3 Listing contents
+
+- content_for :sidebar do
+  h3 Tasks
+  = link_to 'New Post', new_admin_content_path, class: 'button large-12 cell'
 
 table
   thead
@@ -18,5 +22,3 @@ table
         td = link_to 'Destroy', admin_content_path(content), data: { confirm: 'Are you sure?' }, method: :delete
 
 br
-
-= link_to 'New Content', new_admin_content_path
