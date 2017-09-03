@@ -1,6 +1,15 @@
 doctype html
 html lang="en"
   head
+    /! Global Site Tag (gtag.js) - Google Analytics
+    script async="" src="https://www.googletagmanager.com/gtag/js?id=#{Setting.value(:google_analytics)}"
+    javascript:
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments)};
+      gtag('js', new Date());
+
+      gtag('config', '#{Setting.value(:google_analytics)}');
+
     meta charset="utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0"
 
@@ -9,6 +18,17 @@ html lang="en"
     = stylesheet_link_tag "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tag
+    meta name="description" content="#{@meta[:description]}" /
+    meta property="og:type" content="website" /
+    meta property="og:title" content="#{@meta[:title]}" /
+    meta property="og:description" content="#{@meta[:description]}" /
+    meta property="og:url" content="#{@meta[:url]}" /
+    meta property="og:site_name" content="#{@meta[:site_name]}" /
+    meta property="og:locale" content="en_US" /
+    meta name="twitter:site" content="#{@meta[:twitter]}" /
+    = render 'contents/meta' if @meta[:published_time]
+
+
     script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
 
   body

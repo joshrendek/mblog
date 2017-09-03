@@ -1,3 +1,4 @@
 - content_for :title
   = "#{@content.title} - #{Setting.value(:site_title)}"
 = render 'display', content: @content
+= render 'disqus'
