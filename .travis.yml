@@ -5,7 +5,7 @@ jobs:
   include:
     - stage: build docker image
       script:
-      #- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
       - docker build -t joshrendek/mblog .
       - docker images
-      #- docker push $DOCKER_USERNAME/travis-ci-build-stages-demo
+      - docker push $DOCKER_USERNAME/mblog
