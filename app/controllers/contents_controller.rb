@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  caches_page :show, :index
   include ApplicationHelper
   before_action :set_content, only: [:show, :edit, :update, :destroy]
 

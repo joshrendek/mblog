@@ -1,4 +1,5 @@
 class Admin::ContentsController < Admin::BaseAdmin
+  include ApplicationHelper
   before_action :set_content, only: [:show, :edit, :update, :destroy, :uploads, :upload, :delete_upload]
 
   # GET /contents
@@ -57,6 +58,9 @@ class Admin::ContentsController < Admin::BaseAdmin
   def update
     respond_to do |format|
       if @content.update(content_params)
+        expire_page blog_path(@content)
+        expire_page '/'
+
         format.html { redirect_to edit_admin_content_path(@content), notice: 'Content was successfully updated.' }
         format.json { render :show, status: :ok, location: @content }
       else

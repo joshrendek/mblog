@@ -42,6 +42,8 @@ gem 'foundation-rails'
 
 gem 'dropzonejs-rails'
 gem "paperclip", "~> 5.0.0"
+gem "actionpack-page_caching"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
