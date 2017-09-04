@@ -23,3 +23,4 @@ ratings:
   - "**.rb"
 exclude_paths:
 - "app/assets/stylesheets/foundation.css"
+- "bower_components"
