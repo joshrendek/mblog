@@ -41,14 +41,8 @@ html lang="en"
       .cell.large-8.large-offset-2
         br
         ul.menu
-          li= link_to "Home", root_path
-          li= link_to "Projects", root_path
-          li= link_to "Archives", archives_path
-          li= link_to "Screen Casts", root_path
-          li= link_to "Categories", root_path
-          li= link_to "Resume", root_path
-          li= link_to "About", root_path
-          li= link_to "Github", root_path
+          - Menu.all.each do |menu|
+            li = link_to menu.name, menu.target
         br
     .grid-x.grid-padding-x
       .cell.large-6.large-offset-2.small-12.medium-9

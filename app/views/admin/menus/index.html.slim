@@ -1,0 +1,26 @@
+h3 Listing menus
+
+table
+  thead
+    tr
+      th Name
+      th Target
+      th Order
+      th
+      th
+
+  tbody
+    tr
+      = form_for Menu.new, url: admin_menus_path(Menu.new) do |f|
+        td = f.text_field :name
+        td = f.text_field :target
+        td = f.text_field :order
+        td(colspan=2) = f.submit "Add", class: 'button auto cell'
+    - @menus.each do |menu|
+      tr
+      = form_for menu, url: admin_menu_path(menu) do |f|
+        td = f.text_field :name
+        td = f.text_field :target
+        td = f.text_field :order
+        td = f.submit "Save", class: 'button'
+        td = link_to 'Destroy', admin_menu_path(menu), data: { confirm: 'Are you sure?' }, method: :delete, class: 'button alert'
