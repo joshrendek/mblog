@@ -3,6 +3,21 @@
 [![Build Status](https://travis-ci.org/joshrendek/mblog.svg?branch=master)](https://travis-ci.org/joshrendek/mblog)
 [![Code Climate](https://codeclimate.com/github/joshrendek/mblog/badges/gpa.svg)](https://codeclimate.com/github/joshrendek/mblog)
 
+# Administration
+
+## Backing up
+
+``` shell
+docker exec -t mblog-postgres pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
+```
+
+## Restoring
+
+``` shell
+cat dump.sql | docker exec -i mblog-postgres psql -U postgres
+
+```
+
 # Demo (Vagrant)
 
 ``` shell
