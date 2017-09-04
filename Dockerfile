@@ -21,13 +21,13 @@ COPY . /app
 WORKDIR /app
 USER root
 RUN chown -R app.app /app
-RUN bundle exec rake assets:clean
+RUN SKIP_SETUP=true bundle exec rake assets:clean
 USER app
 ADD entrypoint.sh /entrypoint.sh
 RUN bundle install --without development test
 RUN bower install editor.md
 WORKDIR /app
-RUN bundle exec rake assets:precompile
+RUN SKIP_SETUP=true bundle exec rake assets:precompile
 EXPOSE 3000
 WORKDIR /
 USER root
