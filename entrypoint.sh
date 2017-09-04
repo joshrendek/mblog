@@ -2,4 +2,7 @@
 cd /app
 export SECRET_KEY_BASE=$(bundle exec rails secret)
 bundle exec rake db:migrate
-bundle exec rails s -b 0.0.0.0 -p 3000
+# super weird workaround for editor.md asset loading
+mkdir /app/bower_components/assets
+ln -s /app/bower_components/editor.md /app/bower_components/assets/editor.md
+/usr/bin/supervisord -c supervisord.conf

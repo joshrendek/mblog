@@ -3,8 +3,9 @@ MAINTAINER Josh Rendek <josh@joshrendek.com>
 RUN adduser -D -h /app -s /bin/sh app
 ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_ENV=production
+ENV RAILS_SERVE_STATIC_FILES=true
 RUN apk update && \
-    apk add curl ca-certificates alpine-sdk nodejs libpq postgresql-dev && \
+    apk add curl ca-certificates alpine-sdk nginx nodejs libpq postgresql-dev supervisor && \
     mkdir -p /etc/ssl/certs/ && \
     update-ca-certificates && \
     rm -rf /var/cache/apk/*
@@ -13,6 +14,7 @@ ADD Gemfile.lock /tmp/Gemfile.lock
 RUN npm install -g bower
 RUN npm install -g yarn
 WORKDIR /tmp
+COPY nginx.conf /etc/nginx/nginx.conf
 USER app
 RUN bundle install --without development test
 COPY . /app
