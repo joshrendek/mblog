@@ -4,7 +4,8 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
-  config.action_controller.page_cache_directory = "#{Rails.root}/public/cached_pages"
+  # Dont use this setting for prod
+  #config.action_controller.page_cache_directory = "#{Rails.root}/public/cached_pages"
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
