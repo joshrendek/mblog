@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :settings
+    resources :sidebars
     resources :menus
     resources :contents do
       post :upload

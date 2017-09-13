@@ -1,0 +1,18 @@
+= form_for @sidebar, url: @url do |f|
+  - if @sidebar.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@sidebar.errors.count, "error")} prohibited this sidebar from being saved:"
+      ul
+        - @sidebar.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :order
+    = f.number_field :order
+  .field
+    #editormd
+      = f.text_area :body, style: "display: none"
+  .actions = f.submit "Save Sidebar", class: 'button'

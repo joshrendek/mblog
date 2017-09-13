@@ -48,21 +48,17 @@ html lang="en"
       .cell.large-6.large-offset-2.small-12.medium-9
         = yield
       .cell.large-2.medium-2.sidebar
-        .box-title
-          h3 Projects & Software
-        .box-content
-          ul
-            li
-              span
-                = link_to "hnypots.com", "https://hnypots.com"
-                '  is a honeypot service written in Rails and Go
+        - Sidebar.all.each do |sidebar|
+          .box-title
+            h3= sidebar.title
+          - if sidebar.title == "Recent Posts"
+            ul
+              - Content.limit(5).each do |content|
+                li
+                  span=link_to content.title, blog_path(content)
+          - else
+            .box-content
+              = rouge_markdown(sidebar.body).html_safe
 
-        .box-title
-          h3 Recent Posts
-        .box-content
-          ul
-            - Content.limit(5).each do |content|
-              li
-                span=link_to content.title, blog_path(content)
 
     = javascript_include_tag "application"

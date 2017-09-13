@@ -1,0 +1,6 @@
+h3
+  = link_to "Sidebars", admin_sidebars_path
+  '  /
+  = link_to @sidebar.title, edit_admin_sidebar_path(@sidebar)
+
+== render 'form'
