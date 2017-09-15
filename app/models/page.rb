@@ -1,8 +1,4 @@
-class Content < ApplicationRecord
-  has_many :content_files
-
-  default_scope -> { order('created_at desc') }
-
+class Page < ApplicationRecord
   scope :published, -> { where(state: 'published') }
 
   before_save :slugit

@@ -1,0 +1,6 @@
+- content_for :title
+  = "#{@page.title} - #{Setting.value(:site_title)}"
+article
+  h1= @page.title
+  = rouge_markdown(@page.body).html_safe
+= render 'contents/disqus'

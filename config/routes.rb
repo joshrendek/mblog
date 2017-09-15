@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get '/:year/:month/:slug', to: 'contents#show', as: :blog_internal,
       constraints: { year: /[0-9]\d{0,4}/, month: /[a-zA-Z0-9]\d{0,2}/}
 
+
   get :archives, to: 'contents#archives'
 
   namespace :admin do
+    resources :pages
     resources :settings
     resources :sidebars
     resources :menus
@@ -21,4 +23,7 @@ Rails.application.routes.draw do
   get 'page/:page', action: :index, controller: :contents
 
   root to: 'contents#index'
+
+  # Catch all for pages
+  get '/:slug', to: 'pages#show'
 end
