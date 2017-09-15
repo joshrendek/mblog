@@ -1,11 +1,13 @@
 - content_for :sidebar
   h3 Content Settings
   = link_to 'Preview', "/#{@page.slug}?preview=true", target: :_blank, class: 'button success cell auto'
-  = form_for @page, url: admin_content_path(@page), html: { class: 'pure-form' } do |f|
-    = f.select :state, ['published', 'draft']
+  - if @page.persisted?
+    = form_for @page, url: admin_content_path(@page), html: { class: 'pure-form' } do |f|
+      = f.select :state, ['published', 'draft']
   .actions=link_to "Save", "#", class: 'button cell auto', id: 'save-button'
-  hr
-  = link_to 'Destroy', admin_page_path(@page), method: :delete, data: {confirm:  'Are you sure?'}, class: 'button cell auto alert'
+  - if @page.persisted?
+    hr
+    = link_to 'Destroy', admin_page_path(@page), method: :delete, data: {confirm:  'Are you sure?'}, class: 'button cell auto alert'
 
   javascript:
     $('#save-button').click(function() {
