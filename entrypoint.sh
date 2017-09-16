@@ -1,4 +1,5 @@
 #!/bin/sh
+ln -s /mblog /app/public/system
 cd /app
 export SECRET_KEY_BASE=$(bundle exec rails secret)
 SKIP_SETUP=true bundle exec rake db:migrate

@@ -38,7 +38,6 @@ class ContentsController < ApplicationController
   end
 
   def appreciate
-    binding.pry
     Appreciation.create(content: @content, ip_address: request.client_ip || request.x_forwarded_for || request.remote_ip)
     redirect_to blog_path(@content)
   end

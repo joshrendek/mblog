@@ -5,17 +5,27 @@
 
 # Administration
 
-## Backing up
+## Backing Up DB
 
 ``` shell
 docker exec -t mblog-postgres pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_"%H_%M_%S`.sql
 ```
 
-## Restoring
+## Restoring DB
 
 ``` shell
 cat dump.sql | docker exec -i mblog-postgres psql -U postgres
 
+```
+
+## Mostly zero downtime upgrade
+
+``` shell
+mkdir -p /mblog
+docker pull joshrendek/mblog
+docker stop mblog-old
+docker rm mblog
+docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
 
 # Demo (Vagrant)

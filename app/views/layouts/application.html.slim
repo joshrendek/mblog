@@ -51,9 +51,14 @@ html lang="en"
         - Sidebar.all.each do |sidebar|
           .box-title
             h3= sidebar.title
+          - if sidebar.title == "Most Popular"
+            ul
+              - Content.popular.each do |content|
+                li
+                  span=link_to content.title, blog_path(content)
           - if sidebar.title == "Recent Posts"
             ul
-              - Content.limit(5).each do |content|
+              - Content.recent.each do |content|
                 li
                   span=link_to content.title, blog_path(content)
           - else

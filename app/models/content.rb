@@ -8,6 +8,14 @@ class Content < ApplicationRecord
 
   before_save :slugit
 
+  def self.recent
+    limit(5)
+  end
+
+  def self.popular
+    Content.unscoped.where(state: :published).joins(:appreciations).group("contents.id").order("count(appreciations.content_id) desc").limit(5)
+  end
+
   def slugit
     self.slug = to_slug(self.slug || self.title)
   end

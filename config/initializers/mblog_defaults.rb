@@ -2,6 +2,7 @@
 unless ENV['SKIP_SETUP'].present?
   if Sidebar.count == 0
     Sidebar.create(title: 'Recent Posts', order: 0, body: '')
+    Sidebar.create(title: 'Most Popular', order: 0, body: '')
   end
   if Menu.count == 0
     Menu.create(target: '/', name: 'Home', order: 0)

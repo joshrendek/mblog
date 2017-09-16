@@ -11,6 +11,9 @@ table
       th Date
       th State
       th
+        center
+          i.fa.fa-gratipay aria-hidden="true"
+      th
       th
       th
 
@@ -20,6 +23,10 @@ table
         td = link_to content.title, edit_admin_content_path(content)
         td = content.created_at.strftime("%m/%d/%Y")
         td = content.state
+        td
+          = content.appreciations.count
+          '
+          i.fa.fa-gratipay aria-hidden="true"
         td = link_to 'Edit', edit_admin_content_path(content)
         td = link_to 'Destroy', admin_content_path(content), data: { confirm: 'Are you sure?' }, method: :delete
 

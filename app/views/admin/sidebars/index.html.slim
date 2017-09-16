@@ -3,6 +3,12 @@ h3 Sidebars
 - content_for :sidebar do
   h3 Tasks
   = link_to 'New Sidebar', new_admin_sidebar_path, class: 'button cell auto'
+  p
+    h4 Special
+    p Special sidebars (create a sidebar with the exact Title to get the "feature"):
+    ul
+      li Recent Posts
+      li Most Popular
 
 table
   thead
@@ -19,9 +25,3 @@ table
         td = sidebar.order
         td = link_to 'Edit', edit_admin_sidebar_path(sidebar)
         td = link_to 'Destroy', admin_sidebar_path(sidebar), data: { confirm: 'Are you sure?' }, method: :delete
-
-p
-  h4 Special
-  p Special sidebars (create a sidebar with the exact Title to get the "feature"):
-  ul
-    li Recent Posts
