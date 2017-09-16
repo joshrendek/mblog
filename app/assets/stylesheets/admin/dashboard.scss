@@ -1,3 +1,27 @@
 // Place all the styles related to the admin/dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.valign-center {
+    position: relative;
+    top: 50%;
+    > .columns {
+        transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        -o-transform:translateY(-50%);
+        -ms-transform:translateY(-50%);
+    }
+}
+
+.login {
+    border: 1px solid #cfcfcf;
+    padding: 30px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 3px 6px 0 #C2C2C2;
+    box-shadow: 0 3px 6px 0 #C2C2C2;
+
+    form {
+        padding: 15px;
+    }
+}

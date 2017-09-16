@@ -1,2 +1,25 @@
-h1 Admin::Dashboard#index
-p Find me in app/views/admin/dashboard/index.html.slim
+- content_for :sidebar do
+  h3 Tasks
+  = link_to 'New Post', new_admin_content_path, class: 'button large-12 cell'
+br
+.grid-x.grid-padding-x
+  .cell.large-12
+    .card
+      .card-divider
+        strong Appreciation Past Month
+      .card-section
+        = line_chart admin_appreciation_graph_path
+
+    br
+    .card
+      .card-divider
+        strong Draft Posts
+      .card-section
+        table
+          - Content.draft.each do |content|
+            tr
+              td = link_to content.title, edit_admin_content_path(content)
+              td
+                'Started
+                = time_ago_in_words content.created_at
+                '  ago

@@ -5,6 +5,7 @@ class Content < ApplicationRecord
   default_scope -> { order('created_at desc') }
 
   scope :published, -> { where(state: 'published') }
+  scope :draft, -> { where(state: 'draft') }
 
   before_save :slugit
 

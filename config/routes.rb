@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/:year/:month/:slug', to: 'contents#show', as: :blog_internal,
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
       get :uploads
       delete 'delete_upload/:upload_id', action: :delete_upload, as: :delete_upload
     end
+    get 'appreciation_graph', to: 'dashboard#appreciation_graph'
     root to: 'dashboard#index'
   end
 

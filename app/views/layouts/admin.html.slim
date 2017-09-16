@@ -9,19 +9,24 @@ html lang="en"
     = stylesheet_link_tag "application"
     = csrf_meta_tag
     script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    = javascript_include_tag "application"
 
   body
     .admin data-sticky-container=""
       .title-bar data-btm-anchor="content:bottom" data-options="marginTop:0;" data-sticky="" data-top-anchor="1" style="width:100%"
         .title-bar-left
-          ul.menu
-            li= link_to "Dashboard", admin_root_path
-            li= link_to "Posts", admin_contents_path
-            li= link_to "Pages", admin_pages_path
-            li= link_to "Menus", admin_menus_path
-            li= link_to "Sidebars", admin_sidebars_path
-            li= link_to "Settings", admin_settings_path
+          - if admin_signed_in?
+            ul.menu
+              li= link_to "Dashboard", admin_root_path
+              li= link_to "Posts", admin_contents_path
+              li= link_to "Pages", admin_pages_path
+              li= link_to "Menus", admin_menus_path
+              li= link_to "Sidebars", admin_sidebars_path
+              li= link_to "Settings", admin_settings_path
         .title-bar-right
+          - if admin_signed_in?
+            ul.menu
+              li= link_to "Sign out", destroy_admin_session_path, method: :delete
           /! Content
 
     = render 'layouts/messages'
@@ -30,5 +35,3 @@ html lang="en"
         = yield
       .cell.small-3
         = content_for :sidebar
-
-    = javascript_include_tag "application"

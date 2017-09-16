@@ -1,5 +1,8 @@
 # Setup defaults for mblog here
 unless ENV['SKIP_SETUP'].present?
+  if Admin.count == 0
+    Admin.create(username: 'admin', password: 'admin123', password_confirmation: 'admin123', email: 'admin@localhost')
+  end
   if Sidebar.count == 0
     Sidebar.create(title: 'Recent Posts', order: 0, body: '')
     Sidebar.create(title: 'Most Popular', order: 0, body: '')

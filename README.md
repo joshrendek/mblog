@@ -3,6 +3,16 @@
 [![Build Status](https://travis-ci.org/joshrendek/mblog.svg?branch=master)](https://travis-ci.org/joshrendek/mblog)
 [![Code Climate](https://codeclimate.com/github/joshrendek/mblog/badges/gpa.svg)](https://codeclimate.com/github/joshrendek/mblog)
 
+# Installation
+
+``` shell
+docker run -v /mblog --name=mblog-data busybox
+docker pull joshrendek/mblog
+docker stop mblog
+docker rm mblog
+docker run --name mblog --volumes-from=mblog-data -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+```
+
 # Administration
 
 ## Backing Up DB
