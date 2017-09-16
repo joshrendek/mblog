@@ -21,6 +21,7 @@ COPY . /app
 WORKDIR /app
 USER root
 RUN chown -R app.app /app
+ENV SECRET_KEY_BASE=3c45a81fb5e8014564eb20cc3b2bd705ea9c85f970ab8727de8c3b7ba9dc1e47f506570e47621e983ccaddc5334f8fe53fb2095be0ca9bc5e906d99eabf28202
 RUN SKIP_SETUP=true bundle exec rake assets:clean
 USER app
 ADD entrypoint.sh /entrypoint.sh
@@ -28,7 +29,6 @@ RUN bundle install --without development test
 RUN bower install editor.md
 WORKDIR /app
 # This gets over-ridden at run time / container startup
-ENV SECRET_KEY_BASE=3c45a81fb5e8014564eb20cc3b2bd705ea9c85f970ab8727de8c3b7ba9dc1e47f506570e47621e983ccaddc5334f8fe53fb2095be0ca9bc5e906d99eabf28202
 RUN SKIP_SETUP=true bundle exec rake assets:precompile
 EXPOSE 3000
 WORKDIR /
