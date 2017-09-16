@@ -18,14 +18,14 @@ cat dump.sql | docker exec -i mblog-postgres psql -U postgres
 
 ```
 
-## Mostly zero downtime upgrade
+## Quick Upgrade
 
 ``` shell
-mkdir -p /mblog
+docker run -v /mblog --name=mblog-data busybox
 docker pull joshrendek/mblog
-docker stop mblog-old
+docker stop mblog
 docker rm mblog
-docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+docker run --name mblog --volumes-from=mblog-data -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
 
 # Demo (Vagrant)
