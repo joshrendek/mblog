@@ -1,3 +1,11 @@
 article
-  h1= link_to content.title, blog_path(content)
+  .grid-x.grid-padding-x
+    .cell.large-11
+      h1= link_to content.title, blog_path(content)
+    .cell.large-1.appreciation
+      = link_to blog_appr_path(content), alt: 'Show Appreciation' do
+        = content.appreciations.count
+        '
+        i.fa.fa-gratipay aria-hidden="true"
+
   = rouge_markdown(content.body).html_safe

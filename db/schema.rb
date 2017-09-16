@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170914205945) do
+ActiveRecord::Schema.define(version: 20170916014259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appreciations", force: :cascade do |t|
+    t.bigint "content_id"
+    t.inet "ip_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["content_id", "ip_address"], name: "index_appreciations_on_content_id_and_ip_address"
+    t.index ["content_id"], name: "index_appreciations_on_content_id"
+  end
 
   create_table "content_files", force: :cascade do |t|
     t.bigint "content_id"
@@ -71,5 +80,6 @@ ActiveRecord::Schema.define(version: 20170914205945) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "appreciations", "contents"
   add_foreign_key "content_files", "contents"
 end

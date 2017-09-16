@@ -1,7 +1,7 @@
 class ContentsController < ApplicationController
   caches_page :show, :index
   include ApplicationHelper
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :set_content, only: [:show, :appreciate]
 
   def index
     limit = Setting.value(:posts_per_page, "5").to_i
@@ -35,6 +35,11 @@ class ContentsController < ApplicationController
       title: "#{@content.title} - #{Setting.value(:site_title)}",
       page_url: "Setting.value(:site_url)/#{blog_path(@content)}"
     }
+  end
+
+  def appreciate
+    Appreciation.create(content: @content, ip_address: request.remote_ip)
+    redirect_to blog_path(@content)
   end
 
   private

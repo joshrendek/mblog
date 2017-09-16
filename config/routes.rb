@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/:year/:month/:slug', to: 'contents#show', as: :blog_internal,
       constraints: { year: /[0-9]\d{0,4}/, month: /[a-zA-Z0-9]\d{0,2}/}
 
+  get '/:year/:month/:slug/appreciate', to: 'contents#appreciate', as: :blog_appreciate,
+      constraints: { year: /[0-9]\d{0,4}/, month: /[a-zA-Z0-9]\d{0,2}/}
+
 
   get :archives, to: 'contents#archives'
 
