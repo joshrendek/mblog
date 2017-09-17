@@ -6,40 +6,40 @@
 # Screenshots
 
 #### Homepage
-![](doc/homepage.png)
+<img src="doc/homepage.png" width="256">
 
 #### Archives
-![](doc/archives.png)
+<img src="doc/archives.png" width="256">
 
 #### Admin Login
-![](doc/admin_login.png)
+<img src="doc/admin_login.png" width="256">
 
 #### Admin Dashboard
-![](doc/admin_dashboard.png)
+<img src="doc/admin_dashboard.png" width="256">
 
 #### Admin Menu Editor
-![](doc/admin_menu_editor.png)
+<img src="doc/admin_menu_editor.png" width="256">
 
 #### Admin Page Listing
-![](doc/admin_page_list.png)
+<img src="doc/admin_page_list.png" width="256">
 
 #### Admin Post/Page Editor
-![](doc/admin_post_editor.png)
+<img src="doc/admin_post_editor.png" width="256">
 
 #### Admin Post Listing
-![](doc/admin_posts_list.png)
+<img src="doc/admin_posts_list.png" width="256">
 
 #### Admin Settings
-![](doc/admin_settings.png)
+<img src="doc/admin_settings.png" width="256">
 
 #### Admin Sidebar Editor
-![](doc/admin_sidebar_editor.png)
+<img src="doc/admin_sidebar_editor.png" width="256">
 
 #### Admin Sidebar Listing
-![](doc/admin_sidebar.png)
+<img src="doc/admin_sidebar.png" width="256">
 
 #### Admin User Settings
-![](doc/admin_user_settings.png)
+<img src="doc/admin_user_settings.png" width="256">
 
 # First Time Installation
 
