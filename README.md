@@ -15,7 +15,7 @@
 * Simple setup
 * Ability to import from Jekyll/Hugo/etc
 * Must support high load (achieved with page cache + nginx), easily reaching over 4k req/s for posts and pages
-* Easy to work on - Most vanilla rails and javascript, with Zurb Foundation for layout, easily reproduceable builds (with Travis)
+* Easy to work on - Mostly vanilla rails and javascript, with Zurb Foundation for layout, easily reproduceable builds (with Travis)
 
 #### Table of Contents
 
