@@ -38,7 +38,7 @@ docker pull postgres:9.6
 docker pull joshrendek/mblog
 docker stop mblog
 docker rm mblog
-docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+docker run --name mblog --restart=always -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
 
 # Quick Upgrade
@@ -48,7 +48,7 @@ export PGPASS=$(cat ~/.mblog_pgpass)
 docker pull joshrendek/mblog
 docker stop mblog
 docker rm mblog
-docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+docker run --name mblog --restart=always -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
 
 # Importing Jekyll / Markdown
