@@ -18,7 +18,7 @@ class Admin::ContentsController < Admin::BaseAdmin
   end
 
   def upload
-    ContentFile.create(content: @content, attachment: params[:file])
+    ContentFile.create(contentable: @content, attachment: params[:file])
     render status: :ok, json: {"message": "ok"}
   end
 

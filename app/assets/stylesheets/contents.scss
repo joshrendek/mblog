@@ -27,6 +27,9 @@ article {
     font-size: 21px;
     line-height: 1.58;
     letter-spacing: -.003em;
+    border-bottom: 1px solid #dfdfdf;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
 
     img {
         margin: auto;
@@ -40,6 +43,7 @@ article {
 
     .appreciation {
         text-transform: uppercase;
+        text-align: right;
         font-family: Helvetica, mono;
     }
 

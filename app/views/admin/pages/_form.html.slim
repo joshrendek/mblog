@@ -1,15 +1,28 @@
 - content_for :sidebar
   h3 Content Settings
-  = link_to 'Preview', "/#{@page.slug}?preview=true", target: :_blank, class: 'button success cell auto'
   - if @page.persisted?
+    = link_to 'Preview', "/#{@page.slug}?preview=true", target: :_blank, class: 'button success cell auto'
     = form_for @page, url: admin_content_path(@page), html: { class: 'pure-form' } do |f|
       = f.select :state, ['published', 'draft']
   .actions=link_to "Save", "#", class: 'button cell auto', id: 'save-button'
   - if @page.persisted?
     hr
     = link_to 'Destroy', admin_page_path(@page), method: :delete, data: {confirm:  'Are you sure?'}, class: 'button cell auto alert'
+    hr
+    h3 Image Uploader
+    = form_for :files, url: admin_page_upload_path(@page), html: { class: 'dropzone', id: 'editorDropzone' } do |f|
+  - else
+    p Please save in order to enable image uploader & preview.
 
+
+  .uploads
+  - if @page.persisted?
+    javascript:
+      function loadUploads() { $('.uploads').load("#{admin_page_uploads_path(@page.id)}") }
   javascript:
+    $(function() {
+      loadUploads();
+    });
     $('#save-button').click(function() {
       $('#hidden-state').val($('#page_state').val());
       $('#page-form').submit();
@@ -33,4 +46,3 @@
   .field
     #editormd
       = f.text_area :body, style: "display: none"
-  .actions = f.submit "Save", class: 'button'

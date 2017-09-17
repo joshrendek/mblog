@@ -1,4 +1,6 @@
 class Page < ApplicationRecord
+  has_many :content_files, as: :contentable, dependent: :destroy
+
   scope :published, -> { where(state: 'published') }
 
   before_save :slugit

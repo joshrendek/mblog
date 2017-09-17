@@ -17,7 +17,11 @@ Rails.application.routes.draw do
   get :archives, to: 'contents#archives'
 
   namespace :admin do
-    resources :pages
+    resources :pages do
+      post :upload
+      get :uploads
+      delete 'delete_upload/:upload_id', action: :delete_upload, as: :delete_upload
+    end
     resources :settings
     resources :sidebars
     resources :menus

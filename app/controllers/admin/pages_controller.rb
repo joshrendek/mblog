@@ -1,5 +1,19 @@
 class Admin::PagesController < Admin::BaseAdmin
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:show, :edit, :update, :destroy, :delete_upload, :uploads, :upload]
+
+  def delete_upload
+    ContentFile.find(params[:upload_id]).destroy
+    redirect_to edit_admin_page_path(@page.id)
+  end
+
+  def uploads
+    render layout: false
+  end
+
+  def upload
+    ContentFile.create(contentable: @page, attachment: params[:file])
+    render status: :ok, json: {"message": "ok"}
+  end
 
   # GET /pages
   # GET /pages.json
@@ -61,7 +75,7 @@ class Admin::PagesController < Admin::BaseAdmin
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.find(params[:id] || params[:page_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

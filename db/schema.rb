@@ -43,14 +43,15 @@ ActiveRecord::Schema.define(version: 20170916180631) do
   end
 
   create_table "content_files", force: :cascade do |t|
-    t.bigint "content_id"
+    t.string "contentable_type"
+    t.bigint "contentable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "attachment_file_name"
     t.string "attachment_content_type"
     t.integer "attachment_file_size"
     t.datetime "attachment_updated_at"
-    t.index ["content_id"], name: "index_content_files_on_content_id"
+    t.index ["contentable_type", "contentable_id"], name: "index_content_files_on_contentable_type_and_contentable_id"
   end
 
   create_table "contents", force: :cascade do |t|
@@ -99,5 +100,4 @@ ActiveRecord::Schema.define(version: 20170916180631) do
   end
 
   add_foreign_key "appreciations", "contents"
-  add_foreign_key "content_files", "contents"
 end

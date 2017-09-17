@@ -1,0 +1,7 @@
+- @page.content_files.each do |cf|
+  = image_tag cf.attachment.url, class: 'thumbnail'
+  = text_field_tag '', cf.markdown_url, class: 'thumbnail-focus'
+  = form_for cf, url: admin_page_delete_upload_path(@page, cf), method: :delete do |f|
+    = f.submit "Delete", class: 'button alert cell auto'
+javascript:
+  $(".thumbnail-focus").focus(function() { $(this).select(); } );

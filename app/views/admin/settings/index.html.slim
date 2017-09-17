@@ -1,20 +1,23 @@
-h3 Settings
+br
+.grid-x.grid-padding-x
+  .cell.large-8.large-offset-4.login
+    h3 Settings
 
-= form_for :site_settings, url: admin_settings_path, method: :post do |f|
-  = f.label "Site URL"
-  = f.text_field :site_url, value: Setting.value(:site_url)
-  = f.label "Site Title"
-  = f.text_field :site_title, value: Setting.value(:site_title)
-  = f.label "Site Subtitle"
-  = f.text_field :site_subtitle, value: Setting.value(:site_subtitle)
-  = f.label "Site Description"
-  = f.text_field :site_description, value: Setting.value(:site_description, "mblog personal blog")
-  = f.label "Posts per page"
-  = f.text_field :posts_per_page, value: Setting.value(:posts_per_page)
-  = f.label "Google Analytics"
-  = f.text_field :google_analytics, value: Setting.value(:google_analytics)
-  = f.label "Disqus Shortname"
-  = f.text_field :disqus, value: Setting.value(:disqus)
-  = f.label "Twitter"
-  = f.text_field :twitter, value: Setting.value(:twitter, "@")
-  = f.submit "Save Settings", class: 'button'
+    = form_for :site_settings, url: admin_settings_path, method: :post do |f|
+      = f.label "Site URL"
+      = f.text_field :site_url, value: Setting.value(:site_url)
+      = f.label "Site Title"
+      = f.text_field :site_title, value: Setting.value(:site_title)
+      = f.label "Site Subtitle"
+      = f.text_field :site_subtitle, value: Setting.value(:site_subtitle)
+      = f.label "Site Description"
+      = f.text_field :site_description, value: Setting.value(:site_description, "mblog personal blog")
+      = f.label "Posts per page"
+      = f.text_field :posts_per_page, value: Setting.value(:posts_per_page)
+      = f.label "Google Analytics"
+      = f.text_field :google_analytics, value: Setting.value(:google_analytics)
+      = f.label "Disqus Shortname"
+      = f.text_field :disqus, value: Setting.value(:disqus)
+      = f.label "Twitter"
+      = f.text_field :twitter, value: Setting.value(:twitter, "@")
+      = f.submit "Save Settings", class: 'button cell auto'
