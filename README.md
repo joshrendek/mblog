@@ -17,7 +17,7 @@ docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postg
 ``` shell
 scp -r path_to_blog/_posts/ root@yourhost:~/
 docker rm mblog-import
-docker run -it --name mblog-import -v _posts:/posts -v /mblog:/mblog --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog sh 'cd /app; bundle exec rails c'
+docker run -it --name mblog-import -v ~/_posts:/posts -v /mblog:/mblog --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog '/app/import.sh'
 ```
 
 # Administration

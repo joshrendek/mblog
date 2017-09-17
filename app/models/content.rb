@@ -1,6 +1,6 @@
 class Content < ApplicationRecord
-  has_many :appreciations
-  has_many :content_files
+  has_many :appreciations, dependent: :destroy
+  has_many :content_files, dependent: :destroy
 
   default_scope -> { order('created_at desc') }
 
