@@ -6,11 +6,18 @@
 # Installation
 
 ``` shell
-docker run -v /mblog --name=mblog-data busybox
 docker pull joshrendek/mblog
 docker stop mblog
 docker rm mblog
-docker run --name mblog --volumes-from=mblog-data -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+```
+
+# Importing Jekyll / Markdown
+
+``` shell
+scp -r path_to_blog/_posts/ root@yourhost:~/
+docker rm mblog-import
+docker run -it --name mblog-import -v _posts:/posts -v /mblog:/mblog --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog sh 'cd /app; bundle exec rails c'
 ```
 
 # Administration
@@ -26,6 +33,19 @@ docker exec -t mblog-postgres pg_dumpall -c -U postgres > dump_`date +%d-%m-%Y"_
 ``` shell
 cat dump.sql | docker exec -i mblog-postgres psql -U postgres
 
+```
+
+## Backing up Attachments/Uploads
+
+``` shell
+tar czvf mblog.tar.gz /mblog
+```
+
+## Restoring Attachments/Uploads
+
+``` shell
+tar xzvf mblog.tar.gz
+mv mblog /
 ```
 
 ## Quick Upgrade
