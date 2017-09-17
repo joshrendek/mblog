@@ -5,6 +5,42 @@
 
 # Screenshots
 
+#### Homepage
+![](doc/homepage.png)
+
+#### Archives
+![](doc/archives.png)
+
+#### Admin Login
+![](doc/admin_login.png)
+
+#### Admin Dashboard
+![](doc/admin_dashboard.png)
+
+#### Admin Menu Editor
+![](doc/admin_menu_editor.png)
+
+#### Admin Page Listing
+![](doc/admin_page_list.png)
+
+#### Admin Post/Page Editor
+![](doc/admin_post_editor.png)
+
+#### Admin Post Listing
+![](doc/admin_posts_list.png)
+
+#### Admin Settings
+![](doc/admin_settings.png)
+
+#### Admin Sidebar Editor
+![](doc/admin_sidebar_editor.png)
+
+#### Admin Sidebar Listing
+![](doc/admin_sidebar.png)
+
+#### Admin User Settings
+![](doc/admin_user_settings.png)
+
 # First Time Installation
 
 ``` shell
