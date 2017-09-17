@@ -38,8 +38,11 @@ docker pull postgres:9.6
 docker pull joshrendek/mblog
 docker stop mblog
 docker rm mblog
+docker run --name mblog-postgres --restart=always -d -e POSTGRES_PASSWORD=$PGPASS -e POSTGRES_DB=mblog postgres:9.6
 docker run --name mblog --restart=always -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
+
+Default username/password: `admin / admin123`
 
 # Quick Upgrade
 
@@ -59,6 +62,8 @@ ssh root@yourhost
 docker rm mblog-import
 docker run -it --name mblog-import -v ~/_posts:/posts -v /mblog:/mblog --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog '/app/import.sh'
 ```
+
+After importing go to a post and save it to bust the cache.
 
 # Administration
 
