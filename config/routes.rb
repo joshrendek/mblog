@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, :skip => [:registrations]
+  as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get '/:year/:month/:slug', to: 'contents#show', as: :blog_internal,

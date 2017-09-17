@@ -1,0 +1,26 @@
+div(style="padding-top: 180px;")
+.grid-x.grid-padding-x
+  .cell.large-6.large-offset-5.login
+    h3
+      center Edit User Settings
+    = form_for(resource, as: resource_name, url: admin_registration_path, html: { method: :put, class: 'pure-form' }) do |f|
+      = devise_error_messages!
+      .field
+        = f.label :username
+        = f.text_field :username, autofocus: true
+      .field
+        = f.label :email
+        = f.email_field :email, autofocus: true
+      .field
+        = f.label :new_password
+        = f.password_field :password, autocomplete: "off"
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, autocomplete: "off"
+      .field
+        = f.label :current_password
+        = f.password_field :current_password, autocomplete: "off"
+      .actions
+        = f.submit "Update", class: 'button'
+
+      = link_to "Back", :back
