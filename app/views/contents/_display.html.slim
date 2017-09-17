@@ -1,8 +1,8 @@
 article
   .grid-x.grid-padding-x
-    .cell.large-11
+    .cell.large-10.medium-10.small-10
       h1= link_to content.title, blog_path(content)
-    .cell.large-1.appreciation
+    .cell.large-2.medium-2.small-2.appreciation
       = link_to blog_appr_path(content), alt: 'Show Appreciation' do
         = content.appreciations.count
         '

@@ -3,9 +3,24 @@
 [![Build Status](https://travis-ci.org/joshrendek/mblog.svg?branch=master)](https://travis-ci.org/joshrendek/mblog)
 [![Code Climate](https://codeclimate.com/github/joshrendek/mblog/badges/gpa.svg)](https://codeclimate.com/github/joshrendek/mblog)
 
-# Installation
+# First Time Installation
 
 ``` shell
+apt-get update
+curl https://get.docker.com/ | sudo bash
+echo $(base64 </dev/urandom | tr -dc 'a-zA-Z0-9' | head -c20) > ~/.mblog_pgpass
+export PGPASS=$(cat ~/.mblog_pgpass)
+docker pull postgres:9.6
+docker pull joshrendek/mblog
+docker stop mblog
+docker rm mblog
+docker run --name mblog -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
+```
+
+# Quick Upgrade
+
+``` shell
+export PGPASS=$(cat ~/.mblog_pgpass)
 docker pull joshrendek/mblog
 docker stop mblog
 docker rm mblog
@@ -48,15 +63,6 @@ tar xzvf mblog.tar.gz
 mv mblog /
 ```
 
-## Quick Upgrade
-
-``` shell
-docker run -v /mblog --name=mblog-data busybox
-docker pull joshrendek/mblog
-docker stop mblog
-docker rm mblog
-docker run --name mblog --volumes-from=mblog-data -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
-```
 
 # Demo (Vagrant)
 

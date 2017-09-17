@@ -8,6 +8,7 @@
 .DS_Store
 vendor
 public/cached_pages
+public/system
 
 
 # Ignore bundler config.
