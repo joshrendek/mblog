@@ -21,6 +21,8 @@ namespace :import do
                        body: body, state: 'published')
       end
     end
+
+    FileUtils.rm_rf "#{Rails.root}/public/cached_pages"
   end
 
 end
