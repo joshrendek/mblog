@@ -14,6 +14,7 @@
 * Simple dashboard showing statistics and focus on editing/content
 * Simple setup
 * Ability to import from Jekyll/Hugo/etc
+* Must support high load (achieved with page cache + nginx), easily reaching over 4k req/s for posts and pages
 
 #### Table of Contents
 

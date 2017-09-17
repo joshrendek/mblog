@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show]
+  caches_page :show
 
   def show
     @meta = {
