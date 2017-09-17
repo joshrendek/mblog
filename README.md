@@ -54,6 +54,14 @@ docker rm mblog
 docker run --name mblog --restart=always -v /mblog:/mblog -d -p 80:80 --link mblog-postgres:postgres -e DATABASE_URL="postgres://postgres:$PGPASS@postgres/mblog?sslmode=disable" joshrendek/mblog
 ```
 
+# Adding static data / large files to your site
+
+``` shell
+scp large_file.gz root@yourhost:/mblog/
+```
+
+The file will then be available at http://your-site/system/large_file.gz
+
 # Importing Jekyll / Markdown
 
 ``` shell
