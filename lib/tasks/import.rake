@@ -1,7 +1,9 @@
 namespace :import do
   desc "TODO"
   task jekyll: :environment do
-    Content.delete_all
+    ContentFile.destroy_all
+    Appreciation.destroy_all
+    Content.destroy_all
     source_dir = ARGV[1]
     puts "Importing files from #{source_dir}"
     files = Dir["#{source_dir}/*"]
