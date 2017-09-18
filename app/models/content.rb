@@ -9,6 +9,12 @@ class Content < ApplicationRecord
 
   before_save :slugit
 
+  after_save :cache_buster
+
+  def cache_buster
+    FileUtils.rm_rf "#{Rails.root}/public/cached_pages"
+  end
+
   def self.recent
     limit(5)
   end

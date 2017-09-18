@@ -5,6 +5,12 @@ class Page < ApplicationRecord
 
   before_save :slugit
 
+  after_save :cache_buster
+
+  def cache_buster
+    FileUtils.rm_rf "#{Rails.root}/public/cached_pages"
+  end
+
   def slugit
     self.slug = to_slug(self.slug || self.title)
   end
